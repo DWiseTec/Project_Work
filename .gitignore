@@ -1,0 +1,46 @@
+
+✅ This README:
+- Looks **professional**
+- Is **recruiter-friendly**
+- Works perfectly for **portfolio & deployment**
+
+---
+
+## 🚫 2️⃣ `.gitignore` (Tailored for Web Projects)
+
+Create a file named **`.gitignore`** (no extension) and paste this:
+
+```gitignore
+# Node modules
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Build folders
+dist/
+build/
+
+# Cache folders
+.cache/
+.tmp/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.swp
+
+# Temporary files
+*.log
+*.tmp
