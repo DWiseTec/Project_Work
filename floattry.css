@@ -1,0 +1,147 @@
+body{
+    background: lightblue;
+
+}
+.circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+form {text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    margin-left: 4%;
+    padding: 4%;
+    border-style:hidden;
+    cursor: pointer;
+
+}
+input[type=Real-Name]{
+    min-width: 80%;
+    padding: 3% 5% 3% 5%;
+    margin: 3% 3%;
+    border-radius: 8px;
+}
+input[type=email]{
+    min-width: 80%;
+    padding: 3% 5% 3% 5%;
+    margin: 3% 3%;
+    border-radius: 8px;
+}
+input[type=password]{
+        min-width: 80%;
+        padding: 3% 5% 3% 5%;
+        margin: 3% 3%;
+        border-radius: 8px;
+}
+h3 {
+    color: black;
+    text-align: left;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-bottom: 2%;
+}
+p {
+    color: black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 3%;
+    margin-left: 4%;
+    margin-bottom: 2%;
+}
+a{
+    color:dodgerblue;
+}
+a:link {
+    color: black;
+    text-decoration: none;
+}
+a:hover {
+    background-color: yellow;
+}
+
+button{
+    min-width: 80%;
+    text-align: center;
+    background:white;
+    color: #000f;
+    border-radius: 9px;
+    padding: 3% 5% 3% 5%;
+    margin: 3% 3%;
+    cursor: pointer;
+}
+.button{
+    font-size: 16px;
+    border: none;
+    min-width: 90%;
+    text-align: center;
+    background:rgb(53, 117, 214);
+    color:white;
+    padding: 3% 5% 3% 5%;
+    margin: 3% 3% 0% 0%;
+    border-radius: 9px;
+    cursor: pointer;
+}
+button:hover{
+    font-size: 18px;
+    color: yellowgreen;
+}
+hr {
+    align-self: auto;
+    margin: 3% 0% 3% 0%;
+    
+}
+.p {
+    margin-left:33%;
+}
+#para1 {
+    margin-left: 30%;
+}
+.container1 {
+    text-align: center;
+    background:#fff;
+    width: 45%;
+    margin-right: 0%;
+    margin-left: 50%;
+    max-height: 100vh;
+    border-radius: 9px;
+    border-style: groove;}
+    
+.container2 {
+        text-align: center;
+        background: #fff;
+        width: 45%;
+        margin-right: 50%;
+        margin-left: 0%;
+        max-height: 100vh;
+        border-radius: 9px;
+        border-style: groove;}
+.float1 {
+    width:50%;
+    float: left;
+    
+    margin-top: 5%;
+    margin-left: 0%;
+}
+.float2 {
+    margin-top: 5%;
+    width: 50%;
+    float:right; 
+}
+.closebtn {
+    text-decoration: none;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    color: #000;
+    margin-right: 4%;
+    margin-top: 3%;
+}
+.closebtn:hover,
+.closebtn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

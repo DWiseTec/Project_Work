@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JavaScript Quiz App</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f4f6f8; margin: 0; padding: 20px; }
+    .quiz-container { max-width: 600px; margin: auto; background: #fff; padding: 25px; border-radius: 8px; }
+    h1 { text-align: center; color: #2c3e50; }
+    .question { font-size: 18px; margin-bottom: 15px; }
+    .options button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      background: #f8f9fa;
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .options button:hover { background: #e9ecef; }
+    .correct { background: #d4edda !important; }
+    .wrong { background: #f8d7da !important; }
+    .score { text-align: center; margin-top: 20px; font-size: 16px; }
+    .btn { background: #2c7be5; color: #fff; border: none; padding: 10px 15px; cursor: pointer; border-radius: 4px; }
+    .btn:hover { background: #1a5fd0; }
+  </style>
+</head>
+<body>
+
+  <div class="quiz-container">
+    <h1>Frontend Basics Quiz</h1>
+    <div id="quiz">
+      <div class="question" id="question"></div>
+      <div class="options" id="options"></div>
+    </div>
+    <div class="score" id="score"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What does HTML stand for?",
+        options: [
+          "Hyper Trainer Marking Language",
+          "Hyper Text Markup Language",
+          "Hyper Text Marketing Language",
+          "Hyper Tool Multi Language"
+        ],
+        answer: 1
+      },
+      {
+        question: "Which CSS property is used to change text color?",
+        options: ["font-style", "color", "text-align", "background"],
+        answer: 1
+      },
+      {
+        question: "Which symbol is used for comments in JavaScript?",
+        options: ["<!-- -->", "//", "**", "##"],
+        answer: 1
+      },
+      {
+        question: "Which method selects an element by ID?",
+        options: ["querySelectorAll", "getElementsByClassName", "getElementById", "getElementsByTag"],
+        answer: 2
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const scoreEl = document.getElementById('score');
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      questionEl.textContent = q.question;
+      optionsEl.innerHTML = '';
+      q.options.forEach((option, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = option;
+        btn.onclick = () => selectAnswer(btn, index);
+        optionsEl.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(button, index) {
+      const correct = quizData[currentQuestion].answer;
+      if (index === correct) {
+        button.classList.add('correct');
+        score++;
+      } else {
+        button.classList.add('wrong');
+      }
+
+      Array.from(optionsEl.children).forEach(btn => btn.disabled = true);
+
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < quizData.length) {
+          loadQuestion();
+        } else {
+          showScore();
+        }
+      }, 800);
+    }
+
+    function showScore() {
+      quiz.innerHTML = '';
+      scoreEl.innerHTML = `You scored <strong>${score}</strong> out of <strong>${quizData.length}</strong>`;
+    }
+
+    loadQuestion();
+  </script>
+</body>
+</html>

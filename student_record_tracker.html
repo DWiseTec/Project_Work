@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Record Tracker</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background: #f4f6f8; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #2c3e50; }
+    .container { max-width: 1000px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
+    form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    input, select, button {
+      padding: 10px;
+      font-size: 14px;
+    }
+    button { background: #2c7be5; color: #fff; border: none; cursor: pointer; border-radius: 4px; }
+    button:hover { background: #1a5fd0; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 10px; border: 1px solid #ddd; text-align: center; }
+    th { background: #f0f2f5; }
+    .actions button { margin: 2px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <h1>Student Record Tracker</h1>
+  <div class="container">
+    <form id="studentForm">
+      <input type="text" id="name" placeholder="Student Name" required />
+      <input type="text" id="course" placeholder="Course" required />
+      <select id="level">
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+      <input type="number" id="progress" placeholder="Progress (%)" min="0" max="100" required />
+      <button type="submit">Add Student</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Course</th>
+          <th>Level</th>
+          <th>Progress</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="studentTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById('studentForm');
+    const table = document.getElementById('studentTable');
+
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+
+    function renderStudents() {
+      table.innerHTML = '';
+      students.forEach((student, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.course}</td>
+          <td>${student.level}</td>
+          <td>${student.progress}%</td>
+          <td class="actions">
+            <button onclick="deleteStudent(${index})">Delete</button>
+          </td>
+        `;
+        table.appendChild(row);
+      });
+      localStorage.setItem('students', JSON.stringify(students));
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const student = {
+        name: name.value,
+        course: course.value,
+        level: level.value,
+        progress: progress.value
+      };
+      students.push(student);
+      form.reset();
+      renderStudents();
+    });
+
+    function deleteStudent(index) {
+      students.splice(index, 1);
+      renderStudents();
+    }
+
+    renderStudents();
+  </script>
+</body>
+</html>
